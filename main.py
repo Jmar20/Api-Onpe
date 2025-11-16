@@ -48,6 +48,9 @@ def _calcular_digito(dni: str) -> str:
     # Suma de dígitos mod 10 (mock)
     return str(sum(int(d) for d in dni) % 10)
 
+@app.get("/api/consulta")
+def hola():
+    return {"message": "Hola, esta es la API de consulta de ONPE."}
 
 @app.post("/api/consulta", response_model=ConsultaResponse)
 def consulta(req: ConsultaRequest):
