@@ -59,7 +59,7 @@ def consulta(req: ConsultaRequest):
 
     persona = next((p for p in DATA if p.get("dni") == req.dni and p.get("fecha_emision") == req.fecha_emision.isoformat()), None)
     if not persona:
-        raise HTTPException(status_code=404, detail="No se encontró la persona con los datos proporcionados.")
+        raise HTTPException(status_code=400, detail="No se encontró la persona con los datos proporcionados.")
 
     # Preferir el dígito almacenado en los datos; si no existe, calcular como fallback
     registrado = persona.get("digito_verificador")
