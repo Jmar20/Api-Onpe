@@ -85,4 +85,5 @@ def consulta(req: ConsultaRequest):
 if __name__ == "__main__":
     import uvicorn 
 
-    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+    gunicorn main:app -k uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000
+
