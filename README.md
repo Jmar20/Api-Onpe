@@ -36,15 +36,30 @@ uvicorn main:app --reload --host 127.0.0.1 --port 8000
 python main.py
 ```
 
-4) Abrir Swagger UI para probar de forma interactiva:
+4) Abrir Swagger UI para probar de forma interactiva (local):
 
   http://127.0.0.1:8000/docs
 
-5) Ejemplo de petición (PowerShell - Invoke-RestMethod):
+Si ya desplegaste en Azure, tu URL pública es:
 
+  https://onpe-d7avgtemcnfqedaj.canadacentral-01.azurewebsites.net
+
+Y la documentación interactiva en producción estará en:
+
+  https://onpe-d7avgtemcnfqedaj.canadacentral-01.azurewebsites.net/docs
+
+5) Ejemplo de petición (PowerShell - Invoke-RestMethod) — local y en Azure:
+
+Local:
 ```powershell
 $body = @{ dni = '12345678'; fecha_emision = '2015-03-10'; digito_verificador = '6' } | ConvertTo-Json
 Invoke-RestMethod -Uri 'http://127.0.0.1:8000/api/consulta' -Method Post -Body $body -ContentType 'application/json'
+```
+
+En Azure (reemplaza con tu URL si es otra):
+```powershell
+$body = @{ dni = '12345678'; fecha_emision = '2015-03-10'; digito_verificador = '6' } | ConvertTo-Json
+Invoke-RestMethod -Uri 'https://onpe-d7avgtemcnfqedaj.canadacentral-01.azurewebsites.net/api/consulta' -Method Post -Body $body -ContentType 'application/json'
 ```
 
 Respuesta esperada (Formato JSON):
