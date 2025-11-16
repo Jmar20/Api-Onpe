@@ -2,7 +2,7 @@ from datetime import date
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 import json
 import os
@@ -11,9 +11,9 @@ app = FastAPI(title="ONPE Mock API")
 
 
 class ConsultaRequest(BaseModel):
-    dni: str
-    fecha_emision: date
-    digito_verificador: str
+    dni: str = Field(..., description="DNI (8 dígitos)")
+    fecha_emision: date = Field(..., description="Fecha de emisión del DNI (YYYY-MM-DD)")
+    digito_verificador: str = Field(..., description="Dígito verificador del DNI (un dígito)")
 
 
 class Lugar(BaseModel):
@@ -57,12 +57,15 @@ def consulta(req: ConsultaRequest):
     if not req.digito_verificador.isdigit() or len(req.digito_verificador) != 1:
         raise HTTPException(status_code=400, detail="Dígito verificador inválido.")
 
-    if req.digito_verificador != _calcular_digito(req.dni):
-        raise HTTPException(status_code=400, detail="Dígito verificador no coincide.")
-
     persona = next((p for p in DATA if p.get("dni") == req.dni and p.get("fecha_emision") == req.fecha_emision.isoformat()), None)
     if not persona:
         raise HTTPException(status_code=404, detail="No se encontró la persona con los datos proporcionados.")
+
+    # Preferir el dígito almacenado en los datos; si no existe, calcular como fallback
+    registrado = persona.get("digito_verificador")
+    esperado = registrado if registrado is not None else _calcular_digito(req.dni)
+    if req.digito_verificador != esperado:
+        raise HTTPException(status_code=400, detail="Dígito verificador no coincide con el registro.")
 
     lugar = persona.get("lugar_votacion", {})
 
