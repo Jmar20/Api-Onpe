@@ -1,0 +1,57 @@
+
+[
+  {
+    "dni": "12345678",
+    "fecha_emision": "2015-03-10",
+    "nombres": "Juan Carlos",
+    "apellido_paterno": "Perez",
+    "apellido_materno": "Gonzalez",
+    "es_miembro_mesa": true,
+    "lugar_votacion": { "nombre": "IE San Miguel", "lat": -12.0464, "lon": -77.0428 }
+  },
+  {
+    "dni": "87654321",
+    "fecha_emision": "2018-08-01",
+    "nombres": "Maria Fernanda",
+    "apellido_paterno": "Lopez",
+    "apellido_materno": "Sanchez",
+    "es_miembro_mesa": false,
+    "lugar_votacion": { "nombre": "CE Las Flores", "lat": -12.1000, "lon": -76.9500 }
+  },
+  {
+    "dni": "11111111",
+    "fecha_emision": "2012-05-20",
+    "nombres": "Luis Alberto",
+    "apellido_paterno": "Ramirez",
+    "apellido_materno": "Vargas",
+    "es_miembro_mesa": false,
+    "lugar_votacion": { "nombre": "IE Los Olivos", "lat": -11.9876, "lon": -77.0567 }
+  },
+  {
+    "dni": "22222222",
+    "fecha_emision": "2014-11-11",
+    "nombres": "Ana Lucia",
+    "apellido_paterno": "Diaz",
+    "apellido_materno": "Mora",
+    "es_miembro_mesa": true,
+    "lugar_votacion": { "nombre": "IE Santa Rosa", "lat": -12.2000, "lon": -76.9000 }
+  },
+  {
+    "dni": "33333333",
+    "fecha_emision": "2019-02-02",
+    "nombres": "Carlos Eduardo",
+    "apellido_paterno": "Gomez",
+    "apellido_materno": "Flores",
+    "es_miembro_mesa": false,
+    "lugar_votacion": { "nombre": "CE San Juan", "lat": -12.0500, "lon": -77.0300 }
+  },
+  {
+    "dni": "44444444",
+    "fecha_emision": "2020-07-07",
+    "nombres": "Rosa Maria",
+    "apellido_paterno": "Quispe",
+    "apellido_materno": "Huaman",
+    "es_miembro_mesa": true,
+    "lugar_votacion": { "nombre": "IE El Porvenir", "lat": -12.3000, "lon": -76.8500 }
+  }
+]
